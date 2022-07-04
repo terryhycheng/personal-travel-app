@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build-dev": "webpack-dev-server --config webpack.config.js --open",
-    "build-prod": "webpack --config webpack.prod.js"
+    "dev": "webpack-dev-server --config webpack.config.js --open",
+    "build": "webpack --config webpack.prod.js",
+    "server": "nodemon ./src/server/server.js"
   },
   "keywords": [],
   "author": "",

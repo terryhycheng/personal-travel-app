@@ -14,9 +14,13 @@ app.use(bodyParser.json());
 dotenv.config();
 
 //GET Route
-app.get("/", async (req, res) => {
+app.get("/", (req, res) => {
+  res.redirect("http://localhost:8080/");
+});
+
+app.get("/api", async (req, res) => {
   try {
-    res.status(200).send({ message: "Hello world!" });
+    res.status(200).send({ key: process.env.API_KEY });
   } catch (error) {
     res.status(400).send({ message: error });
   }
