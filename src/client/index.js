@@ -1,10 +1,21 @@
+import { data_list, fetchdata } from "./js/app";
+import { submit_handler } from "./js/submit";
 import { checker } from "./js/checker";
 import { setStorage } from "./js/storage";
-import { submit_handler } from "./js/submit";
 import { updateUI } from "./js/updateUI";
-import { data } from "./js/app";
 
-//SASS
+//Import styles (.scss)
 import "./styles/index.scss";
 
-export { checker, setStorage, submit_handler, updateUI, data };
+//Element selection
+const input = document.querySelector("#input");
+const submitbtn = document.querySelector("#submitbtn");
+const entryholder = document.querySelector("#entryholder");
+
+//Event listeners
+submitbtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  submit_handler(input.value);
+});
+
+export { checker, setStorage, updateUI, data_list, fetchdata };

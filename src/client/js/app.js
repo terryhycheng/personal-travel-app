@@ -1,11 +1,36 @@
-let data = [];
+const axios = require("axios");
+const { v4: uuidv4 } = require("uuid");
 
-//fetching API key
+let data_list = [];
 
-//fetching Geonames APIs
+const fetchdata = (input) => {
+  //A placeholder for data object
+  let data = {};
 
-//fetching Weatherbit APIs
+  //fetching API key
+  //fetching Geonames APIs
+  //fetching Weatherbit APIs
+  //fetching Pixabay APIs
+  console.log("Data fetched!");
 
-//fetching Pixabay APIs
+  /**
+   * Set properties to object placeholder
+   * which includes:
+   * 1. Postal Code
+   * 2. Country
+   * 3. Start date
+   * 4. End date
+   * 5. Trip duration
+   * 6. Unique ID
+   * 7. Weather Info
+   * 8. Photo
+   * */
 
-export { data };
+  data.id = uuidv4();
+  data.name = input;
+
+  //Pass organised data to local storage
+  Client.setStorage(data);
+};
+
+export { data_list, fetchdata };

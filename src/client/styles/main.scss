@@ -1,9 +1,22 @@
 @use "./variables" as *;
 @use "./mixins" as *;
 
+.box {
+  margin: 2rem 0;
+}
+
+.holder {
+}
+
 h1 {
   color: red;
   @include for-mobile() {
     color: blue;
   }
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 0.2rem;
 }

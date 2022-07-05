@@ -1,7 +1,10 @@
 //Set items to local storage
 const setStorage = (data) => {
-  Client.data.push(data);
-  console.log("All Data : ", JSON.stringify(Client.data));
+  Client.data_list.push(data);
+  console.log(
+    "Localstorage Added! All data : ",
+    JSON.stringify(Client.data_list)
+  );
   Client.updateUI(data);
 };
 

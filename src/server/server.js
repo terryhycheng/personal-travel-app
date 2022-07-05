@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
+const axios = require("axios");
 
 //set up server
 const port = 8000;
@@ -14,8 +15,15 @@ app.use(bodyParser.json());
 dotenv.config();
 
 //GET Route
-app.get("/", (req, res) => {
-  res.redirect("http://localhost:8080/");
+app.get("/todos", async (req, res) => {
+  try {
+    const data = await axios.get(
+      "https://jsonplaceholder.typicode.com/todos?_limit=10"
+    );
+    res.send(data.data);
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 app.get("/api", async (req, res) => {

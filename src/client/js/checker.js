@@ -1,7 +1,7 @@
 //Input data checker
 const checker = (data) => {
   //check if data is valid
-  if (data) {
+  if (data.length > 0) {
     console.log("Data checked.");
     return true;
   } else {
