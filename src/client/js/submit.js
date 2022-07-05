@@ -1,8 +1,9 @@
 //Handle submission
-const submit_handler = (data) => {
+const submit_handler = (event) => {
+  event.preventDefault();
   //pass to data checker
-  Client.checker(data)
-    ? Client.fetchdata(data)
+  Client.checker(input.value)
+    ? Client.fetchdata(input.value)
     : console.error("Invalid input!");
 };
 

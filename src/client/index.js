@@ -13,9 +13,6 @@ const submitbtn = document.querySelector("#submitbtn");
 const entryholder = document.querySelector("#entryholder");
 
 //Event listeners
-submitbtn.addEventListener("click", (event) => {
-  event.preventDefault();
-  submit_handler(input.value);
-});
+submitbtn.addEventListener("click", submit_handler);
 
 export { checker, setStorage, updateUI, data_list, fetchdata };
