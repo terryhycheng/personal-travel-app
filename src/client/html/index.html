@@ -57,13 +57,64 @@
     </header>
     <section id="hero">
       <div class="maxWidth" id="hero_contents_container">
+        <!-- Add a New Trip -->
         <div class="box" id="new_trip">
-          <h2>Add a New Trip</h2>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. A eos enim
-            doloremque! Ea, blanditiis hic?
-          </p>
+          <!-- Title -->
+          <div id="title_box">
+            <div>
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 40 40"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#clip0_41_995)">
+                  <path
+                    d="M28 10H32V38H8V10H12V8C12 6.93913 12.4214 5.92172 13.1716 5.17157C13.9217 4.42143 14.9391 4 16 4H24C25.0609 4 26.0783 4.42143 26.8284 5.17157C27.5786 5.92172 28 6.93913 28 8V10ZM34 10H36C37.0609 10 38.0783 10.4214 38.8284 11.1716C39.5786 11.9217 40 12.9391 40 14V34C40 35.0609 39.5786 36.0783 38.8284 36.8284C38.0783 37.5786 37.0609 38 36 38H34V10ZM6 10V38H4C2.93913 38 1.92172 37.5786 1.17157 36.8284C0.421427 36.0783 0 35.0609 0 34V14C0 11.8 1.8 10 4 10H6ZM16 8V10H24V8H16Z"
+                    fill="#181C21"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_41_995">
+                    <rect width="40" height="40" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+            <div>
+              <h2>Add a New Trip</h2>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. A eos
+                enim doloremque! Ea, blanditiis hic?
+              </p>
+            </div>
+          </div>
+          <form id="input_holder">
+            <div class="input_box_holder">
+              <label for="input2">Country</label>
+              <select id="input2">
+                <option value="hk">Hong Kong</option>
+                <option value="usa">United States of America (USA)</option>
+                <option value="uk">United Kingdom (UK)</option>
+              </select>
+            </div>
+            <div class="input_box_holder">
+              <label for="input">Postal Code</label>
+              <input type="text" id="input" />
+            </div>
+            <div class="input_box_holder">
+              <label for="input3">Departing Date</label>
+              <input type="date" id="input3" />
+            </div>
+            <div class="input_box_holder">
+              <label for="input4">Return Date</label>
+              <input type="date" id="input4" />
+            </div>
+            <button type="submit" id="submitbtn">submit</button>
+          </form>
         </div>
+        <!-- Trip Length -->
         <div class="box" id="trip_length">
           <h2>Trip Length</h2>
           <div class="num_box">
@@ -71,6 +122,7 @@
             <p>days in total</p>
           </div>
         </div>
+        <!-- No. of Trips -->
         <div class="box" id="no_of_trip">
           <h2>No. of Trips</h2>
           <div class="num_box">
@@ -82,10 +134,10 @@
     </section>
     <section class="box">
       <h1>Hello world!</h1>
-      <form>
+      <!-- <form>
         <input type="text" id="input" />
         <button type="submit" id="submitbtn">Click me</button>
-      </form>
+      </form> -->
     </section>
     <section id="entryholder"></section>
   </body>

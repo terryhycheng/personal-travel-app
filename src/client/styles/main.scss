@@ -1,6 +1,10 @@
 @use "./variables" as *;
 @use "./mixins" as *;
 
+/**
+* ------ HEADER -------
+*/
+
 #logo_holder {
   display: flex;
   align-items: center;
@@ -12,7 +16,7 @@
   justify-content: space-between;
   align-items: center;
   color: white;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   font-size: 2rem;
   font-weight: 400;
 
@@ -20,6 +24,10 @@
     cursor: pointer;
   }
 }
+
+/**
+* ----- HERO SECTION -----
+*/
 
 #hero {
   display: flex;
@@ -30,16 +38,73 @@
 
 #hero_contents_container {
   display: grid;
+  width: 100%;
+  grid-template-columns: 65% 1fr;
   gap: 1rem;
+  margin-bottom: -20px;
 
   .box {
     background-color: white;
   }
+
+  @include for-mobile() {
+    margin-bottom: auto;
+  }
 }
 
+#new_trip {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 1rem;
+  border-bottom: 10px solid $main-color;
+}
+
+#title_box {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+#input_holder {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "ip ip"
+    "ip ip"
+    "bt bt";
+  justify-content: center;
+  gap: 1rem 0.5rem;
+
+  button {
+    grid-area: bt;
+    width: 100%;
+    padding: 0.4rem 0;
+    margin-top: 0.5rem;
+  }
+}
+
+.input_box_holder {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  select,
+  input {
+    height: 100%;
+    padding: 0.2rem;
+  }
+}
+
+/**
+* ----- Classes & Tags ------
+*/
+
 .maxWidth {
-  max-width: 80%;
+  max-width: 1200px;
   margin: auto;
+  padding: 0 1rem;
 }
 
 .box {
