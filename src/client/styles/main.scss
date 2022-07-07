@@ -1,11 +1,53 @@
 @use "./variables" as *;
 @use "./mixins" as *;
 
-.box {
-  margin: 2rem 0;
+#logo_holder {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
 }
 
-.holder {
+#header_holder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 0.5rem;
+  font-size: 2rem;
+  font-weight: 400;
+
+  svg {
+    cursor: pointer;
+  }
+}
+
+#hero {
+  display: flex;
+  min-height: 45vh;
+  background: url("../assets/bg-image.jpg") no-repeat center;
+  background-size: cover;
+}
+
+#hero_contents_container {
+  display: grid;
+  gap: 1rem;
+
+  .box {
+    background-color: white;
+  }
+}
+
+.maxWidth {
+  max-width: 80%;
+  margin: auto;
+}
+
+.box {
+  border: 1px solid red;
+}
+
+header {
+  background: $main-color;
 }
 
 h1 {
