@@ -20,7 +20,7 @@ const updateUI = (data) => {
     <h3>${data.name}</h3>
     <p>${data.id}</p>
   `;
-  entryholder.append(div);
+  card_holder.append(div);
   input.value = "";
   console.log("Input value cleared!");
 };

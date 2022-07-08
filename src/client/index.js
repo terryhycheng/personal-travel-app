@@ -10,7 +10,7 @@ import "./styles/index.scss";
 //Element selection
 const input = document.querySelector("#input");
 const submitbtn = document.querySelector("#submitbtn");
-const entryholder = document.querySelector("#entryholder");
+const card_holder = document.querySelector("#card_holder");
 
 //Event listeners
 submitbtn.addEventListener("click", submit_handler);
