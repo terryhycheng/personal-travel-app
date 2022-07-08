@@ -3,3 +3,7 @@
     @content;
   }
 }
+
+@mixin ani {
+  transition: all 0.3s;
+}
