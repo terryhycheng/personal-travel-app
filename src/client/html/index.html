@@ -82,31 +82,48 @@
             </div>
             <div>
               <h2>Add a New Trip</h2>
-              <p>Search properties to rent in Hong Kong</p>
+              <p>Please enter the details of your trip.</p>
             </div>
           </div>
           <form id="input_holder">
             <div class="input_box_holder">
-              <label for="input2">Country</label>
-              <select id="input2">
-                <option value="hk">Hong Kong</option>
-                <option value="usa">United States of America (USA)</option>
-                <option value="uk">United Kingdom (UK)</option>
+              <label for="country">Country</label>
+              <select id="country">
+                <option value="USA">United States of America (USA)</option>
+                <option value="JP">Japan</option>
+                <option value="UK">United Kingdom (UK)</option>
               </select>
             </div>
             <div class="input_box_holder">
-              <label for="input">Postal Code</label>
-              <input type="text" id="input" />
+              <label for="city">City</label>
+              <input type="text" id="city" />
             </div>
             <div class="input_box_holder">
-              <label for="input3">Departing Date</label>
-              <input type="date" id="input3" />
+              <label for="departing_date">Departing Date</label>
+              <input type="date" id="departing_date" />
             </div>
             <div class="input_box_holder">
-              <label for="input4">Return Date</label>
-              <input type="date" id="input4" />
+              <label for="return_date">Return Date</label>
+              <input type="date" id="return_date" />
             </div>
             <button type="submit" id="submitbtn">submit</button>
+            <div id="warning_box">
+              <p class="hide" id="required_warning">
+                *Please fill in all the fields before submitting.
+              </p>
+              <p class="hide" id="cityname_warning">
+                *Invalid city name. Please enter a correct one. You can check on
+                <a href="https://www.geonames.org/postal-codes/" target="_blank"
+                  >www.geonames.org</a
+                >
+                if you need.
+              </p>
+              <p class="hide" id="date_warning">
+                *Invalid date input. Please make sure return date is
+                <strong>after</strong>
+                departing date.
+              </p>
+            </div>
           </form>
         </div>
         <div id="hero_right">
@@ -114,7 +131,7 @@
           <div class="box shadow" id="trip_length">
             <h2>Trip Length</h2>
             <div class="num_box">
-              <h3>24</h3>
+              <h3 id="trip_length_num">0</h3>
               <p>days in total</p>
             </div>
           </div>
@@ -122,7 +139,7 @@
           <div class="box shadow" id="no_of_trip">
             <h2>No. of Trips</h2>
             <div class="num_box">
-              <h3>5</h3>
+              <h3 id="trip_no_num">0</h3>
               <p>trips in total</p>
             </div>
           </div>
@@ -132,164 +149,8 @@
     <section>
       <div class="container maxWidth" id="my_trips_container">
         <h2>My Trips</h2>
-        <div id="card_holder">
-          <!-- Card 1 -->
-          <div class="box card">
-            <div id="card_image_box">
-              <div>1</div>
-            </div>
-            <div id="card_content_holder">
-              <div id="card_title_box">
-                <div id="card_title_holder">
-                  <h2 id="card_title">Causeway Bay</h2>
-                  <div class="container" id="date_holder">
-                    <div>
-                      <strong>Departing:</strong>
-                      <span id="departing_date">2 July, 2022</span>
-                    </div>
-                    <div>
-                      <strong>Return:</strong>
-                      <span id="return_date">8 July, 2022</span>
-                    </div>
-                  </div>
-                </div>
-                <div id="card_trip_length">
-                  <h3>5</h3>
-                  <p>nights</p>
-                </div>
-              </div>
-              <div id="card_weather_box">
-                <hr />
-                <strong>Weather:</strong>
-                <div id="weather_container">
-                  <svg
-                    width="50"
-                    height="50"
-                    viewBox="0 0 50 50"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M46.875 24.2187C46.8637 21.882 46.0509 19.6199 44.5724 17.8103C43.0939 16.0008 41.0392 14.7534 38.7516 14.2765C38.0858 11.1231 36.3563 8.29428 33.8529 6.26429C31.3496 4.2343 28.2246 3.12646 25.0016 3.12646C21.7786 3.12646 18.6536 4.2343 16.1502 6.26429C13.6469 8.29428 11.9174 11.1231 11.2516 14.2765C8.96341 14.7527 6.90799 15.9999 5.42885 17.8095C3.94971 19.6191 3.13646 21.8815 3.12502 24.2187C3.12578 26.734 4.06648 29.1582 5.76252 31.0156C4.48131 32.3356 3.61802 34.0043 3.28077 35.8127C2.94351 37.6211 3.14729 39.4888 3.86657 41.1819C4.58585 42.875 5.78866 44.3182 7.32438 45.3309C8.86011 46.3436 10.6605 46.8807 12.5 46.875H29.6875C31.2035 46.8813 32.6982 46.5184 34.0425 45.8177C35.3869 45.117 36.5404 44.0995 37.4034 42.8531C38.2664 41.6068 38.8129 40.169 38.9958 38.6641C39.1787 37.1592 38.9925 35.6324 38.4532 34.2156C40.8082 33.8059 42.9435 32.5792 44.4838 30.7511C46.024 28.9231 46.8707 26.6107 46.875 24.2203V24.2187ZM29.6875 43.75H12.5C10.9349 43.7526 9.4259 43.1668 8.27244 42.1088C7.11898 41.0509 6.40529 39.5981 6.27294 38.0385C6.14058 36.4789 6.59923 34.9266 7.55791 33.6894C8.51658 32.4522 9.90525 31.6205 11.4485 31.3593L12.4844 31.1843L12.7125 30.1593C13.1365 28.2522 14.1982 26.5466 15.7223 25.3242C17.2463 24.1018 19.1416 23.4356 21.0953 23.4356C23.0491 23.4356 24.9444 24.1018 26.4684 25.3242C27.9925 26.5466 29.0541 28.2522 29.4781 30.1593L29.7047 31.1843L30.7407 31.3609C32.282 31.6242 33.6683 32.4566 34.6251 33.6934C35.5819 34.9303 36.0393 36.4813 35.9069 38.0393C35.7744 39.5974 35.0617 41.0489 33.9099 42.1065C32.7582 43.1641 31.2512 43.7506 29.6875 43.75V43.75ZM36.7188 31.25H36.6328C35.4642 29.9419 33.9498 28.9908 32.2641 28.5062C31.5163 26.1293 30.0298 24.0528 28.0207 22.5788C26.0117 21.1047 23.5848 20.3099 21.093 20.3099C18.6012 20.3099 16.1743 21.1047 14.1653 22.5788C12.1562 24.0528 10.6697 26.1293 9.9219 28.5062C9.36641 28.6679 8.82712 28.8808 8.31096 29.1421C7.65973 28.4979 7.14237 27.7313 6.78867 26.8863C6.43496 26.0413 6.2519 25.1347 6.25002 24.2187C6.25807 22.4533 6.92744 20.755 8.12609 19.4589C9.32475 18.1628 10.9656 17.3629 12.725 17.2171L14 17.1171L14.1547 15.8484C14.4809 13.2015 15.7636 10.7653 17.7614 8.99863C19.7591 7.23194 22.3339 6.25674 25.0008 6.25674C27.6677 6.25674 30.2425 7.23194 32.2402 8.99863C34.238 10.7653 35.5208 13.2015 35.8469 15.8484L36.0016 17.1171L37.275 17.2171C39.0891 17.3553 40.7789 18.1916 41.9889 19.5502C43.1989 20.9089 43.8347 22.6838 43.7627 24.5017C43.6906 26.3196 42.9163 28.0387 41.6025 29.2973C40.2888 30.5559 38.5381 31.2559 36.7188 31.25V31.25Z"
-                      fill="#181C21"
-                    />
-                  </svg>
-
-                  <div>
-                    <h3>25°C - 30°C</h3>
-                    <p>Mostly cloudy throughout the day.</p>
-                  </div>
-                </div>
-              </div>
-              <div id="card_action_box">
-                <div>
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-                      stroke="#181C21"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M15 16L12.586 13.586C12.2109 13.211 12.0001 12.7024 12 12.172V6"
-                      stroke="#181C21"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                  Causeway Bay is <strong>2</strong> days away.
-                </div>
-                <button>Delete</button>
-              </div>
-            </div>
-          </div>
-          <!-- Card 2 -->
-          <div class="box card">
-            <div id="card_image_box">
-              <div>1</div>
-            </div>
-            <div id="card_content_holder">
-              <div id="card_title_box">
-                <div id="card_title_holder">
-                  <h2 id="card_title">Causeway Bay</h2>
-                  <div class="container" id="date_holder">
-                    <div>
-                      <strong>Departing:</strong>
-                      <span id="departing_date">2 July, 2022</span>
-                    </div>
-                    <div>
-                      <strong>Return:</strong>
-                      <span id="return_date">8 July, 2022</span>
-                    </div>
-                  </div>
-                </div>
-                <div id="card_trip_length">
-                  <h3>5</h3>
-                  <p>nights</p>
-                </div>
-              </div>
-              <div id="card_weather_box">
-                <hr />
-                <strong>Weather:</strong>
-                <div id="weather_container">
-                  <svg
-                    width="50"
-                    height="50"
-                    viewBox="0 0 50 50"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M46.875 24.2187C46.8637 21.882 46.0509 19.6199 44.5724 17.8103C43.0939 16.0008 41.0392 14.7534 38.7516 14.2765C38.0858 11.1231 36.3563 8.29428 33.8529 6.26429C31.3496 4.2343 28.2246 3.12646 25.0016 3.12646C21.7786 3.12646 18.6536 4.2343 16.1502 6.26429C13.6469 8.29428 11.9174 11.1231 11.2516 14.2765C8.96341 14.7527 6.90799 15.9999 5.42885 17.8095C3.94971 19.6191 3.13646 21.8815 3.12502 24.2187C3.12578 26.734 4.06648 29.1582 5.76252 31.0156C4.48131 32.3356 3.61802 34.0043 3.28077 35.8127C2.94351 37.6211 3.14729 39.4888 3.86657 41.1819C4.58585 42.875 5.78866 44.3182 7.32438 45.3309C8.86011 46.3436 10.6605 46.8807 12.5 46.875H29.6875C31.2035 46.8813 32.6982 46.5184 34.0425 45.8177C35.3869 45.117 36.5404 44.0995 37.4034 42.8531C38.2664 41.6068 38.8129 40.169 38.9958 38.6641C39.1787 37.1592 38.9925 35.6324 38.4532 34.2156C40.8082 33.8059 42.9435 32.5792 44.4838 30.7511C46.024 28.9231 46.8707 26.6107 46.875 24.2203V24.2187ZM29.6875 43.75H12.5C10.9349 43.7526 9.4259 43.1668 8.27244 42.1088C7.11898 41.0509 6.40529 39.5981 6.27294 38.0385C6.14058 36.4789 6.59923 34.9266 7.55791 33.6894C8.51658 32.4522 9.90525 31.6205 11.4485 31.3593L12.4844 31.1843L12.7125 30.1593C13.1365 28.2522 14.1982 26.5466 15.7223 25.3242C17.2463 24.1018 19.1416 23.4356 21.0953 23.4356C23.0491 23.4356 24.9444 24.1018 26.4684 25.3242C27.9925 26.5466 29.0541 28.2522 29.4781 30.1593L29.7047 31.1843L30.7407 31.3609C32.282 31.6242 33.6683 32.4566 34.6251 33.6934C35.5819 34.9303 36.0393 36.4813 35.9069 38.0393C35.7744 39.5974 35.0617 41.0489 33.9099 42.1065C32.7582 43.1641 31.2512 43.7506 29.6875 43.75V43.75ZM36.7188 31.25H36.6328C35.4642 29.9419 33.9498 28.9908 32.2641 28.5062C31.5163 26.1293 30.0298 24.0528 28.0207 22.5788C26.0117 21.1047 23.5848 20.3099 21.093 20.3099C18.6012 20.3099 16.1743 21.1047 14.1653 22.5788C12.1562 24.0528 10.6697 26.1293 9.9219 28.5062C9.36641 28.6679 8.82712 28.8808 8.31096 29.1421C7.65973 28.4979 7.14237 27.7313 6.78867 26.8863C6.43496 26.0413 6.2519 25.1347 6.25002 24.2187C6.25807 22.4533 6.92744 20.755 8.12609 19.4589C9.32475 18.1628 10.9656 17.3629 12.725 17.2171L14 17.1171L14.1547 15.8484C14.4809 13.2015 15.7636 10.7653 17.7614 8.99863C19.7591 7.23194 22.3339 6.25674 25.0008 6.25674C27.6677 6.25674 30.2425 7.23194 32.2402 8.99863C34.238 10.7653 35.5208 13.2015 35.8469 15.8484L36.0016 17.1171L37.275 17.2171C39.0891 17.3553 40.7789 18.1916 41.9889 19.5502C43.1989 20.9089 43.8347 22.6838 43.7627 24.5017C43.6906 26.3196 42.9163 28.0387 41.6025 29.2973C40.2888 30.5559 38.5381 31.2559 36.7188 31.25V31.25Z"
-                      fill="#181C21"
-                    />
-                  </svg>
-
-                  <div>
-                    <h3>25°C - 30°C</h3>
-                    <p>Mostly cloudy throughout the day.</p>
-                  </div>
-                </div>
-              </div>
-              <div id="card_action_box">
-                <div>
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-                      stroke="#181C21"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M15 16L12.586 13.586C12.2109 13.211 12.0001 12.7024 12 12.172V6"
-                      stroke="#181C21"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                  Causeway Bay is <strong>2</strong> days away.
-                </div>
-                <button>Delete</button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="hide" id="card_holder"></div>
+        <div class="card box" id="no_trip_box">No trip record</div>
       </div>
     </section>
     <footer>Copyright © 2022 Terry Cheng. All rights reserved.</footer>
