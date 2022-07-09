@@ -2,10 +2,10 @@
 const updateUI = (data, data_list = localStorage) => {
   const num = data_list.length;
   let totalDays = 0;
-  //Read data from local storage
+  //Create a div for a new card
   const div = document.createElement("div");
   div.setAttribute("id", data.id);
-  div.classList.add("card", "box");
+  div.classList.add("card");
   div.innerHTML = `
   <div id="card_image_box" style="background: url('${data.imageURL}') no-repeat
   center;
@@ -52,7 +52,6 @@ background-size: cover;">
           alt="weather icon"
           height="50"
         />
-
         <div>
           <h3>${
             data.weather.low_temp ? data.weather.low_temp : data.weather.temp
@@ -71,6 +70,7 @@ background-size: cover;">
   card_holder.classList.remove("hide");
   no_trip_box.classList.add("hide");
   card_holder.append(div);
+  //Update Trip Length and No. of Trips
   trip_length_num.innerHTML = totalDays;
   trip_length_num.innerHTML = calLength(totalDays);
   trip_no_num.innerHTML = data_list.length;
@@ -81,10 +81,8 @@ background-size: cover;">
   );
 };
 
+//Calculate Total Trip Length from items in localStorage
 const calLength = (totalNum) => {
-  // for (let data_temp of data_list) {
-  //   totalNum += data_temp.date.trip_length;
-  // }
   for (let data of Object.keys(localStorage)) {
     const num = JSON.parse(localStorage.getItem(data)).date.trip_length;
     totalNum += num;
@@ -92,11 +90,8 @@ const calLength = (totalNum) => {
   return totalNum;
 };
 
+//Delete handler : remove div and update localStorage
 const del_handler = (div, data, totalDays, data_list) => {
-  // data_list.splice(
-  //   data_list.indexOf(data_list.filter((each) => each.id === data.id)[0]),
-  //   1
-  // );
   div.remove();
   localStorage.removeItem(data.id);
   data_list.length === 0 ? no_trip_box.classList.remove("hide") : "";

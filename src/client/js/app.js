@@ -1,8 +1,6 @@
 const axios = require("axios");
 const { v4: uuidv4 } = require("uuid");
 
-let data_list = [];
-
 const fetchdata = async (input) => {
   //Add unique id to data object
   let data = { ...input, id: uuidv4(), createdOn: new Date() };
@@ -27,6 +25,7 @@ const fetchWeather = async (data) => {
       },
     });
     let temp_data = {};
+    //Check if it is one week away or not
     const order = data.date.fromToday <= 7 ? 0 : res.data.data.length - 1;
     temp_data = res.data.data[order].weather;
     temp_data.temp = res.data.data[order].temp;
@@ -44,6 +43,7 @@ const fetchPhoto = async (data) => {
       body: { keyword: data.city.toLowerCase().replace(/ /g, "+") },
     });
     if (res.data.hits.length > 0) {
+      //Randomly pick from the first 3 results
       const RanNum = Math.ceil(Math.random() * 3);
       return res.data.hits[RanNum].largeImageURL;
     } else {
@@ -54,4 +54,4 @@ const fetchPhoto = async (data) => {
   }
 };
 
-export { data_list, fetchdata };
+export { fetchdata };

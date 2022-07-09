@@ -4,11 +4,10 @@ const setStorage = (data) => {
   city.value = "";
   departing_date.value = "";
   return_date.value = "";
-  Client.data_list.push(data);
+  //Set localStorage
   localStorage.setItem(data.id, JSON.stringify(data));
+  //Update UI
   Client.updateUI(JSON.parse(localStorage.getItem(data.id)));
 };
-
-//Remove item from storage
 
 export { setStorage };

@@ -4,12 +4,6 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const axios = require("axios");
 
-//import fake data
-const weather_current = require("../../data/currentWeather.json");
-const weather_forecast = require("../../data/forecast.json");
-const geonames = require("../../data/geonames.json");
-const photos = require("../../data/photos.json");
-
 //set up server
 const port = 8000;
 const app = express();
@@ -17,10 +11,11 @@ const app = express();
 //middlewares
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.static("dist"));
 
 dotenv.config();
 
-//GET Route
+//POST Routes
 app.post("/geonames", async (req, res) => {
   try {
     const data = await axios.get(
@@ -32,7 +27,6 @@ app.post("/geonames", async (req, res) => {
   }
 });
 
-//POST Route
 app.post("/weather", async (req, res) => {
   try {
     const { lat, lng, fromToday } = req.body.body;

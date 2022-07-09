@@ -1,10 +1,10 @@
-import { data_list, fetchdata } from "./js/app";
+import { fetchdata } from "./js/app";
 import { submit_handler } from "./js/submit";
 import { checker } from "./js/checker";
 import { setStorage } from "./js/storage";
 import { updateUI } from "./js/updateUI";
 
-//Import styles (.scss)
+//Import styles
 import "./styles/index.scss";
 
 //Global variables
@@ -50,8 +50,9 @@ departing_date.addEventListener("change", () => {
 departing_date.setAttribute("min", today_string);
 return_date.setAttribute("min", today_string);
 
+//Read from localStorage and print all the items out
 for (let data of Object.keys(localStorage)) {
   updateUI(JSON.parse(localStorage.getItem(data)), localStorage);
 }
 
-export { checker, setStorage, updateUI, data_list, fetchdata };
+export { checker, setStorage, updateUI, fetchdata };
