@@ -1,6 +1,6 @@
 # ✈️Personal Travel App
 
-![Travel App Preview](../src/client/assets/travel-app-preview.jpg)
+![Travel App Preview](https://raw.githubusercontent.com/terryhycheng/travel-app/main/src/client/assets/travel-app-preview.jpg)
 
 ## 🌟Overview
 
