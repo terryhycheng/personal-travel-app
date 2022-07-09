@@ -67,4 +67,4 @@ const checkDate = (d_date, r_date) => {
     : date_warning.classList.remove("hide");
 };
 
-export { checker };
+export { checker, checkDate };
