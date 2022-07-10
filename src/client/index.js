@@ -55,4 +55,10 @@ for (let data of Object.keys(localStorage)) {
   updateUI(JSON.parse(localStorage.getItem(data)), localStorage);
 }
 
+console.log(
+  "From index.js: 'Departing_date' tag should be selected",
+  departing_date
+);
+console.log("From index.js: Departing_date.value :", departing_date.value);
+
 export { checker, setStorage, updateUI, fetchdata };

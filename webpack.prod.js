@@ -54,6 +54,7 @@ module.exports = {
     new MiniCssExtractPlugin(),
     new GenerateSW({
       swDest: "./sw.js",
+      maximumFileSizeToCacheInBytes: 5000000,
     }),
   ],
   devServer: {
