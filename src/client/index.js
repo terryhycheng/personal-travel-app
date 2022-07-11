@@ -52,13 +52,8 @@ return_date.setAttribute("min", today_string);
 
 //Read from localStorage and print all the items out
 for (let data of Object.keys(localStorage)) {
+  localStorage.clear();
   updateUI(JSON.parse(localStorage.getItem(data)), localStorage);
 }
-
-console.log(
-  "From index.js: 'Departing_date' tag should be selected",
-  departing_date
-);
-console.log("From index.js: Departing_date.value :", departing_date.value);
 
 export { checker, setStorage, updateUI, fetchdata };
