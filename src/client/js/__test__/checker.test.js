@@ -6,7 +6,7 @@ describe("Test data checkers", () => {
     const return_date = "2022-12-02";
     expect(checkDate(departure_date, return_date)).toEqual({
       diffDays: 54,
-      diffToday: 92,
+      diffToday: 90,
     });
   });
 });

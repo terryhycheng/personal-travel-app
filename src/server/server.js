@@ -55,3 +55,5 @@ app.post("/photos", async (req, res) => {
 
 //Console log while server starts to run
 app.listen(port, () => console.log(`Listening on port ${port}`));
+
+export default app;
