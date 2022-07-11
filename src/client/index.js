@@ -51,8 +51,9 @@ departing_date.setAttribute("min", today_string);
 return_date.setAttribute("min", today_string);
 
 //Read from localStorage and print all the items out
+localStorage.clear();
+
 for (let data of Object.keys(localStorage)) {
-  localStorage.clear();
   updateUI(JSON.parse(localStorage.getItem(data)), localStorage);
 }
 
