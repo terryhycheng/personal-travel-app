@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 const axios = require("axios");
 
 //set up server
-const port = 8000;
+const port = process.env.PORT || 8000;
 const app = express();
 
 //middlewares
@@ -55,5 +55,3 @@ app.post("/photos", async (req, res) => {
 
 //Console log while server starts to run
 app.listen(port, () => console.log(`Listening on port ${port}`));
-
-export default app;
