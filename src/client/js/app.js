@@ -17,13 +17,16 @@ const fetchdata = async (input) => {
 
 const fetchWeather = async (data) => {
   try {
-    const res = await axios.post(`http://localhost:8000/weather`, {
-      body: {
-        lat: data.geo.lat,
-        lng: data.geo.lng,
-        fromToday: data.date.fromToday,
-      },
-    });
+    const res = await axios.post(
+      `http://localhost:${process.env.PORT}/weather`,
+      {
+        body: {
+          lat: data.geo.lat,
+          lng: data.geo.lng,
+          fromToday: data.date.fromToday,
+        },
+      }
+    );
     let temp_data = {};
     //Check if it is one week away or not
     const order = data.date.fromToday <= 7 ? 0 : res.data.data.length - 1;
@@ -39,9 +42,12 @@ const fetchWeather = async (data) => {
 
 const fetchPhoto = async (data) => {
   try {
-    const res = await axios.post(`http://localhost:8000/photos`, {
-      body: { keyword: data.city.toLowerCase().replace(/ /g, "+") },
-    });
+    const res = await axios.post(
+      `http://localhost:${process.env.PORT}/photos`,
+      {
+        body: { keyword: data.city.toLowerCase().replace(/ /g, "+") },
+      }
+    );
     if (res.data.hits.length > 0) {
       //Randomly pick from the first 3 results
       const RanNum = Math.ceil(Math.random() * 3);
