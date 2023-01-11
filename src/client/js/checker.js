@@ -43,7 +43,7 @@ const checker = async ({
 const checkCity = async (city, country) => {
   try {
     const data = await axios.post(
-      `http://localhost:${process.env.PORT}/geonames?city=${city
+      `https://personal-travel-app-production.up.railway.app/geonames?city=${city
         .toLowerCase()
         .replace(/ /g, "+")}&country=${country}`
     );

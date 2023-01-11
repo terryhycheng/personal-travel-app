@@ -18,7 +18,7 @@ const fetchdata = async (input) => {
 const fetchWeather = async (data) => {
   try {
     const res = await axios.post(
-      `http://localhost:${process.env.PORT}/weather`,
+      `https://personal-travel-app-production.up.railway.app/weather`,
       {
         body: {
           lat: data.geo.lat,
@@ -43,7 +43,7 @@ const fetchWeather = async (data) => {
 const fetchPhoto = async (data) => {
   try {
     const res = await axios.post(
-      `http://localhost:${process.env.PORT}/photos`,
+      `https://personal-travel-app-production.up.railway.app/photos`,
       {
         body: { keyword: data.city.toLowerCase().replace(/ /g, "+") },
       }

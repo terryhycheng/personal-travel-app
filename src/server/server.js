@@ -4,16 +4,16 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const axios = require("axios");
 
+dotenv.config();
+
 //set up server
-const port = process.env.PORT || 8000;
+const port = process.env.PORT;
 const app = express();
 
 //middlewares
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static("dist"));
-
-dotenv.config();
 
 //POST Routes
 app.post("/geonames", async (req, res) => {
